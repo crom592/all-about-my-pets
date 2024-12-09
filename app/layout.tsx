@@ -9,6 +9,11 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: '나의 팻의 모든것',
   description: '반려동물 지원 사업 및 입양 정보 제공 앱',
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/images/logo.png',
+  },
 }
 
 export default function RootLayout({
@@ -32,4 +37,3 @@ export default function RootLayout({
     </html>
   )
 }
-

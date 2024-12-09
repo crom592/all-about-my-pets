@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Card, CardContent } from "@/components/ui/card"
 import { PawPrint, MapPin, Heart, User, Bell } from 'lucide-react'
 import { Button } from "@/components/ui/button"
@@ -8,8 +9,20 @@ export default function Home() {
   return (
     <div className="container mx-auto px-4 py-8">
       <header className="flex justify-between items-center mb-8">
-        <h1 className="text-3xl font-bold text-primary">나의 팻의 모든것</h1>
+        <Link href="/" className="flex items-center space-x-2">
+          <Image 
+            src="/images/logo.png" 
+            alt="로고" 
+            width={60} 
+            height={60} 
+            className="rounded-full"
+          />
+          <h1 className="text-2xl font-bold text-primary">
+            나의 팻의 모든것
+          </h1>
+        </Link>
         <div className="flex items-center space-x-4">
+        
           <Button variant="ghost" size="icon">
             <Bell className="h-5 w-5" />
           </Button>
