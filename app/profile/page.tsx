@@ -1,6 +1,7 @@
 "use client"
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { User, ArrowLeft, Edit, PawPrint, Bell } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -25,12 +26,11 @@ const initialSupportPrograms = [
 ]
 
 export default function Profile() {
-  const [userProfile, setUserProfile] = useState(initialUserProfile)
-  const [supportPrograms, setSupportPrograms] = useState(initialSupportPrograms)
+  const [userProfile] = useState(initialUserProfile)
+  const [supportPrograms] = useState(initialSupportPrograms)
   const { toast } = useToast()
 
   const handleEditProfile = () => {
-    // 실제 앱에서는 여기서 프로필 편집 모달이나 페이지로 이동할 수 있습니다.
     toast({
       title: "프로필 수정",
       description: "프로필 수정 기능이 곧 추가될 예정입니다.",
@@ -72,7 +72,13 @@ export default function Profile() {
         {userProfile.pets.map((pet, index) => (
           <Card key={index} className="bg-card hover:bg-accent transition-colors duration-300 rounded-xl shadow-md overflow-hidden">
             <div className="h-40 overflow-hidden">
-              <img src={pet.image} alt={pet.name} className="w-full h-full object-cover" />
+              <Image 
+                src={pet.image} 
+                alt={pet.name} 
+                width={400} 
+                height={300} 
+                className="w-full h-full object-cover"
+              />
             </div>
             <CardHeader>
               <CardTitle className="text-xl text-primary">{pet.name}</CardTitle>

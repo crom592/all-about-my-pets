@@ -8,7 +8,16 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Input } from "@/components/ui/input"
 import { useState } from 'react'
 
-const nationalPrograms = [
+interface Program {
+  id: number;
+  title: string;
+  description: string;
+  eligibility: string;
+  agency: string;
+  contact: string;
+}
+
+const nationalPrograms: Program[] = [
   {
     id: 1,
     title: "유실·유기동물 입양비 지원",
@@ -27,7 +36,7 @@ const nationalPrograms = [
   }
 ]
 
-const seoulPrograms = [
+const seoulPrograms: Program[] = [
   {
     id: 1,
     title: "반려동물 내장형 동물등록",
@@ -65,7 +74,7 @@ const seoulPrograms = [
 export default function SupportPrograms() {
   const [searchTerm, setSearchTerm] = useState('')
 
-  const filterPrograms = (programs) => {
+  const filterPrograms = (programs: Program[]) => {
     return programs.filter(program => 
       program.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       program.description.toLowerCase().includes(searchTerm.toLowerCase())

@@ -33,12 +33,18 @@ const recommendations = [
 
 export default function Recommendations() {
   const [loading, setLoading] = useState(true)
-  const [userRecommendations, setUserRecommendations] = useState([])
+  const [userRecommendations, setUserRecommendations] = useState<Array<{
+    id: number;
+    title: string;
+    description: string;
+    eligibility: string;
+    distance: string;
+  }>>([])
   const { toast } = useToast()
 
   useEffect(() => {
     // 실제 앱에서는 여기서 API 호출을 통해 사용자 맞춤 추천을 가져올 수 있습니다.
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setUserRecommendations(recommendations)
       setLoading(false)
       toast({
@@ -46,7 +52,9 @@ export default function Recommendations() {
         description: "최신 정보를 확인해보세요!",
       })
     }, 1500) // 로딩 효과를 위해 1.5초 지연
-  }, [])
+
+    return () => clearTimeout(timer)
+  }, [toast])
 
   return (
     <div className="container mx-auto px-4 py-8">
